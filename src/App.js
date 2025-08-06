@@ -17,9 +17,6 @@ let App = () => {
         <div>
             <Header/>
             <Body />
-            <div className="">
-                <h1>Welcome to Mobilise Network</h1>
-            </div>
         </div>
         
     )

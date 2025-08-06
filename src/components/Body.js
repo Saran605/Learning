@@ -1,14 +1,31 @@
 import { useState,useEffect } from "react";
 
 
-const dataURL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&collection=83639&tags=layout_CCS_Biryani&sortBy=&filters=&type=rcv2&offset=0&page_type=null";
+const dataURL = "https://mobilise-networking-default-rtdb.asia-southeast1.firebasedatabase.app/.json";
+const videobgUrl = "https://www.azero.in/videos/background4.mp4"
+
+const HeroSection = ()=>{
+    return(
+        <div className="hero-section">
+            <div>
+                <video autoPlay loop muted className="bg-video">
+                    <source src={videobgUrl} type="video/mp4"></source>
+                </video>
+            </div>
+        </div>
+    )
+}
 
 
-const Product = ()=>{
+const Product = (data)=>{
+    console.log(data.data)
+    let {image,Cost_per_month,Locality} = data.data;
+    console.log(image)
     return(
         <div className="product">
-            <img></img>
-            
+            <img src={image}></img>
+            <h2>{Locality}</h2>
+            <p>{Cost_per_month}</p>
         </div>
     )
 }
@@ -19,19 +36,26 @@ const Billboard_Products = ()=>{
     const [products, setProducts] = useState([]);
     console.log("Working")
 
+    useEffect( ()=>{
+        fetcturl();
+    },[])
+
 
     const fetcturl = async ()=>{
         let dataA = await fetch(dataURL);
         let data = await dataA.json();
-        let mainData =  data?.data?.cards;
+        let mainData =  data;
+        console.log(mainData)
         setProducts(mainData);
     }
-    fetcturl();
+    
 
 
     return (
-        <div>
-            <h1>Billboard Products</h1>
+        <div className="products-item-section">
+            {
+                products.map((items,index) => <Product key={items.SL_No} data={items}/>)
+            }
         </div>
     )
 }
@@ -39,7 +63,8 @@ const Billboard_Products = ()=>{
 
 export const Body = ()=>{
     return(
-        <div>
+        <div className="home-section-body">
+            <HeroSection/>
             <Billboard_Products/>
         </div>
     )
