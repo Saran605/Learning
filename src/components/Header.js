@@ -1,4 +1,4 @@
-
+import {Link} from "react-router"
 
 const logo = "https://mobilise.agency/wp-content/uploads/2023/08/ll-1.webp"
 
@@ -12,10 +12,12 @@ export const Header = () =>{
                     </div>
                     <div className="nav-block-b">
                         <ul>
-                            <li>About</li>
-                            <li>Our Network</li>
-                            <li>Content & Creativity</li>
-                            <li>Get in Touch</li>
+                            <Link to=""><li>Home</li></Link>
+                            <Link to=""><li>Billboard Solutions</li></Link>
+                            <Link to=""><li>Location</li></Link>
+                            <Link to=""><li>Pricing</li></Link>
+                            <Link to=""><li>About US</li></Link>
+                            <Link to=""><li>Contact</li></Link>
                         </ul>
                     </div>
                 </div>

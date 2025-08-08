@@ -6,10 +6,6 @@ import {Body} from "./components/Body"
 
 let rootId = document.getElementById("root")
 
-const Check = () => {
-    
-    <h1>Hello</h1>
-}
 
 
 let App = () => {
